@@ -13,9 +13,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>23</maven.compiler.target>
         <maven.compiler.source>23</maven.compiler.source>
-        <junit.version>5.11.3</junit.version>
+        <junit-vintage-engine.version>5.11.4</junit-vintage-engine.version>
+        <junit-platform-suite.version>1.11.4</junit-platform-suite.version>
         <serenity.version>4.2.22</serenity.version>
         <assertj.version>3.24.2</assertj.version>
+        <cucumber-junit-platform-engine.version>7.20.1</cucumber-junit-platform-engine.version>
+        <encoding>UTF-8</encoding>
+        <tags></tags>
         <webdriver.base.url></webdriver.base.url>
     </properties>
 
@@ -23,6 +27,12 @@
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
@@ -51,16 +61,27 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform-suite.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
+            <version>${junit-vintage-engine.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-vintage-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.10</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -108,12 +129,17 @@
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
-                <version>4.2.8</version>
+                <version>${serenity.version}</version>
+                <configuration>
+                    <tags>${tags}</tags>
+                    <reports>single-page-html</reports>
+                    <!--                    <generateFullReport>true</generateFullReport>-->
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>net.serenity-bdd</groupId>
-                        <artifactId>serenity-core</artifactId>
-                        <version>4.2.8</version>
+                        <artifactId>serenity-single-page-report</artifactId>
+                        <version>${serenity.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
