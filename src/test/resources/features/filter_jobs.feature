@@ -13,3 +13,6 @@ Feature: Filter jobs based on category
       | Category |
       | Frontend |
       | Backend  |
+      | Devops |
+      | Full Stack |
+      | Digital Marketing|
