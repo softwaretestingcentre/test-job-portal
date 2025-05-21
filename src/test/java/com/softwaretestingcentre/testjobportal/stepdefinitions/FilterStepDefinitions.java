@@ -1,24 +1,29 @@
 package com.softwaretestingcentre.testjobportal.stepdefinitions;
 
-import io.cucumber.java.PendingException;
+import com.softwaretestingcentre.testjobportal.helpers.FilterJobs;
+import com.softwaretestingcentre.testjobportal.helpers.NavigateTo;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
+
+import static com.softwaretestingcentre.testjobportal.helpers.FilterJobs.checkAllJobsMatchCategory;
 
 public class FilterStepDefinitions {
 
     @Given("{actor} is browsing jobs")
     public void actor_is_browsing_jobs(Actor actor) {
-        throw new PendingException("Implement this step");
+        actor.wasAbleTo(NavigateTo.theJobListPage());
     }
 
-    @Given("{actor} filters on {string}")
+    @When("{actor} filters on {string}")
     public void actor_filters_on_category(Actor actor, String category) {
-        throw new PendingException("Implement this step");
+        actor.wasAbleTo(FilterJobs.byCategory(category));
     }
 
-    @Given("{actor} only sees {string} jobs")
-    public void actor_only_sees_category_jobs(Actor actor) {
-        throw new PendingException("Implement this step");
+    @Then("{actor} only sees {string} jobs")
+    public void actor_only_sees_category_jobs(Actor actor, String category) {
+        actor.attemptsTo(checkAllJobsMatchCategory(category));
     }
 
 }
