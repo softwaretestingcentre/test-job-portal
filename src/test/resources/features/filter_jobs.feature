@@ -1,4 +1,4 @@
-Feature: Filter jobs based on category
+Feature: Filter jobs
 
   Scenario Outline: Filter jobs by category
     Given John is browsing jobs
