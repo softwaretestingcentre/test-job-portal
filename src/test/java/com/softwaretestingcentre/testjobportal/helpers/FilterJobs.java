@@ -9,7 +9,7 @@ import net.serenitybdd.screenplay.questions.Text;
 public class FilterJobs {
 
     public static Performable byCategory(String jobCategory){
-        return Task.where("{0} filters jobs by "+jobCategory,
+        return Task.where("{0} filters jobs by " + jobCategory,
                 Click.on(JobListPage.JOB_FILTER.of(jobCategory))
         );
     }
@@ -17,7 +17,7 @@ public class FilterJobs {
     public static Performable checkAllJobsMatchCategory(String category) {
         return Ensure.that(Text.ofEach(JobListPage.JOB_CATEGORY_LIST))
                 .allMatch("category",
-                        it -> it.contains(category));
+                        job -> job.contains(category));
     }
 
 }
