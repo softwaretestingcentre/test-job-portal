@@ -13,7 +13,7 @@ public class FilterStepDefinitions {
 
     @Given("{actor} is browsing jobs")
     public void actor_is_browsing_jobs(Actor actor) {
-        actor.wasAbleTo(NavigateTo.theJobListPage());
+        actor.wasAbleTo(NavigateTo.pageByLink("Jobs"));
     }
 
     @When("{actor} filters on {string}")

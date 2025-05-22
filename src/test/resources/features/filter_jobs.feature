@@ -10,9 +10,9 @@ Feature: Filter jobs based on category
     When he filters on "<Category>"
     Then he only sees "<Category>" jobs
     Examples:
-      | Category |
-      | Frontend |
-      | Backend  |
-      | Devops |
-      | Full Stack |
-      | Digital Marketing|
+      | Category          |
+      | Frontend          |
+      | Backend           |
+      | Devops            |
+      | Full Stack        |
+      | Digital Marketing |
