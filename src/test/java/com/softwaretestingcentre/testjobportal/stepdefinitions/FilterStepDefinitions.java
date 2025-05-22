@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 
 import static com.softwaretestingcentre.testjobportal.helpers.FilterJobs.checkAllJobsMatchCategory;
+import static com.softwaretestingcentre.testjobportal.helpers.FilterJobs.checkAllJobsMatchExperience;
 
 public class FilterStepDefinitions {
 
@@ -26,4 +27,13 @@ public class FilterStepDefinitions {
         actor.attemptsTo(checkAllJobsMatchCategory(category));
     }
 
+    @When("{actor} filters on {string} level")
+    public void actor_filters_on_experience(Actor actor, String experience) {
+        actor.attemptsTo(FilterJobs.byExperience(experience));
+    }
+
+    @Then("{actor} only sees jobs that match the {string} level")
+    public void actor_only_sees_experience_level_jobs(Actor actor, String experience) {
+        actor.attemptsTo(checkAllJobsMatchExperience(experience));
+    }
 }
