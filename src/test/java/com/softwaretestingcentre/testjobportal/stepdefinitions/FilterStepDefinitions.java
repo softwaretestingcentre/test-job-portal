@@ -2,6 +2,7 @@ package com.softwaretestingcentre.testjobportal.stepdefinitions;
 
 import com.softwaretestingcentre.testjobportal.helpers.FilterJobs;
 import com.softwaretestingcentre.testjobportal.helpers.NavigateTo;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,5 +36,15 @@ public class FilterStepDefinitions {
     @Then("{actor} only sees jobs that match the {string} level")
     public void actor_only_sees_experience_level_jobs(Actor actor, String experience) {
         actor.attemptsTo(checkAllJobsMatchExperience(experience));
+    }
+
+    @When("he filters on salary above {string} pa")
+    public void heFiltersOnSalaryAbovePa(String annualSalary) {
+        throw new PendingException("Implement me");
+    }
+
+    @Then("he only sees jobs that pay more than {string} pa")
+    public void heOnlySeesJobsThatPayMoreThanPa(String annualSalary) {
+        throw new PendingException("Implement me");
     }
 }

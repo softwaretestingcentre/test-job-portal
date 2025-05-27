@@ -22,3 +22,9 @@ Feature: Filter jobs
       | 2-3 year   |
       | 4-5 year   |
       | 5+ year    |
+
+  Scenario: Filter jobs by salary
+    Given John is browsing jobs
+    When he filters on salary above "50000" pa
+    Then he only sees jobs that pay more than "50000" pa
+
