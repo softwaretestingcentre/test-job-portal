@@ -17,4 +17,10 @@ public class JobListPage extends PageObject {
     public static Target JOB_EXPERIENCE_LIST = Target.the("job experience list")
             .locatedBy(".job-detail>.experience>p>div");
 
+    public static Target JOB_CARD = Target.the("job card for {0} at {1}")
+            .locatedBy("//*[@class='job-card' and contains(., '{1}{0}')]");
+
+    public static Target JOB_APPLY = Target.the("job card for {0} at {1}")
+            .locatedBy("//*[@class='job-card' and contains(., '{1}{0}')]//a[@href='/apply-jobs']");
+
 }
