@@ -10,6 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class JobApplications {
+
+    public static String SUCCESSFUL_APPLICATION = "Your Job Application has been Applied Successfully";
+    public static String DUPLICATE_APPLICATION = "You Already Applied For This Job!";
+
     public static Performable applyForJob(String role, String company) {
         return Task.where("{0} applies for " + role + " job at " + company,
                 Click.on(JobListPage.JOB_APPLY.of(role, company)));
@@ -23,9 +27,17 @@ public class JobApplications {
                 Click.on(JobApplicationPage.SUBMIT));
     }
 
+    public static Performable applicationAlertHandler(Actor actor, String expectedMessage) {
+        String outcome = actor.asksFor(HtmlAlert.text());
+        actor.attemptsTo(Switch.toAlert().andAccept());
+        return Ensure.that(outcome).isEqualTo(expectedMessage);
+    }
+
     public static Performable checkJobApplicationIsAcknowledged(Actor actor) {
-        String acknowledgement = actor.asksFor(HtmlAlert.text());
-        Switch.toAlert().andAccept();
-        return Ensure.that(acknowledgement).isEqualTo("Your Job Application has been Applied Successfully");
+        return applicationAlertHandler(actor, SUCCESSFUL_APPLICATION);
+    }
+
+    public static Performable checkDuplicateJobApplicationIsRejected(Actor actor) {
+        return applicationAlertHandler(actor, DUPLICATE_APPLICATION);
     }
 }
