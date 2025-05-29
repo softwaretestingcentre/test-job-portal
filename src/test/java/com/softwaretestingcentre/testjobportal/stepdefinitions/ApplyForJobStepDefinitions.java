@@ -21,11 +21,11 @@ public class ApplyForJobStepDefinitions {
 
     @Then("{actor} sees that the job application is acknowledged")
     public void heSeesThatTheJobApplicationIsAcknowledged(Actor actor) {
-        actor.attemptsTo(JobApplications.checkJobApplicationIsAcknowledged(actor));
+        actor.attemptsTo(JobApplications.checkJobApplicationIsAcknowledged());
     }
 
     @Then("{actor} sees that the job application is rejected")
     public void heSeesThatTheJobApplicationIsRejected(Actor actor) {
-        actor.attemptsTo(JobApplications.checkDuplicateJobApplicationIsRejected(actor));
+        actor.attemptsTo(JobApplications.checkDuplicateJobApplicationIsRejected());
     }
 }
